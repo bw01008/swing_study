@@ -1,0 +1,41 @@
+//1. 플러그인(plugin) 설정
+plugins {
+    id 'java'
+    id 'application'
+}
+
+//jdk버전
+sourceCompatibility = 1.8	//jdk버전
+
+// 인코딩 지점
+tasks.withType(JavaCompile){
+	options.encoding = 'UTF-8'	//인코딩은 UTF-8로 하겠다.
+}
+
+javadoc {
+    options.encoding = 'UTF-8'
+}
+//2. 저장소 설정
+repositories {
+    jcenter()	//자파일을 jcenter에서 가져오겠다.
+}
+
+//3. 의존관계 설정 : 의존관계는 group, name, version순서로 의존성 기술
+dependencies {	//Project and External Dependencies 라이브러리에서 확인할 수 있는데 자바프로젝트 > 우클릭 > gradle > refresh
+	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
+//	implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
+//   testImplementation 'junit:junit:4.13'
+
+}
+
+jar {
+	version = 1.0
+	mainClassName= 'swing_study.SwingMain'
+	baseName= 'SwingMain'
+	appendix = 'bin'
+	
+	manifest{
+		attributes 'Title': baseName, 'Version': version, 'Main-Class': mainClassName
+	}
+	dependsOn configurations.runtime// 실행 가능한jar 파일설정
+}
