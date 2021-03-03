@@ -24,7 +24,7 @@ repositories {
 dependencies {	//Project and External Dependencies 라이브러리에서 확인할 수 있는데 자바프로젝트 > 우클릭 > gradle > refresh
 	// https://mvnrepository.com/artifact/mysql/mysql-connector-java
 //	implementation group: 'mysql', name: 'mysql-connector-java', version: '5.1.49'
-//   testImplementation 'junit:junit:4.13'
+   testImplementation 'junit:junit:4.13'
 
 }
 
