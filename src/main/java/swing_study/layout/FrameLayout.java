@@ -11,7 +11,7 @@ import javax.swing.border.EmptyBorder;
 public class FrameLayout extends JFrame {
 
 	private JPanel contentPane;
-	private LayoutGubun gubun;
+	private LayoutGubun gubun;	//enum선언
 	
 	public FrameLayout(LayoutGubun gubun) {
 		this.gubun = gubun;

@@ -30,6 +30,7 @@ public class JPanelEx extends JFrame implements ActionListener {
 	}
 
 	private void initialize() {
+		setTitle("부서정보");
 		setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		setBounds(550, 100, 450, 300);
 		contentPane = new JPanel();
@@ -37,11 +38,11 @@ public class JPanelEx extends JFrame implements ActionListener {
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 
-		pDept = new DeptPanel(); // 패널 생성
-		contentPane.add(pDept, BorderLayout.CENTER); // contentPane에 패널 추가
+		pDept = new DeptPanel(); // 디자인에서 contentpane 위에 패널을 올리고 Morph - subclass로 만들어 둔 패널을 합친다.
+		contentPane.add(pDept, BorderLayout.CENTER); // contentPane 중앙에 패널 추가
 
 		JPanel pBtn = new JPanel(); // 패널 생성
-		contentPane.add(pBtn, BorderLayout.SOUTH);
+		contentPane.add(pBtn, BorderLayout.SOUTH);	// contentPane 아래쪽에 패널 추가
 
 		btnSetDept = new JButton("부서설정");
 		btnSetDept.addActionListener(this);

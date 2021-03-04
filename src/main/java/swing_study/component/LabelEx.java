@@ -15,6 +15,7 @@ import java.awt.Font;
 import java.io.File;
 import java.awt.event.MouseListener;
 import java.awt.event.MouseEvent;
+import javax.swing.JButton;
 
 public class LabelEx extends JFrame implements MouseListener {
 

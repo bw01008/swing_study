@@ -1,6 +1,5 @@
 package swing_study;
 
-import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -8,6 +7,10 @@ import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
 
 import swing_study.component.FrameComponentEx;
+import swing_study.component.Fruit;
+import swing_study.component.JButtonEx;
+import swing_study.component.JCheckBoxCustomEx;
+import swing_study.component.JCheckBoxEx;
 import swing_study.component.LabelEx;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JPanelEx;
@@ -17,9 +20,9 @@ import swing_study.layout.LayoutGubun;
 import java.awt.GridLayout;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.border.TitledBorder;
-import javax.swing.BoxLayout;
 import javax.swing.UIManager;
 import java.awt.Color;
 
@@ -37,7 +40,9 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JPanel pComponent1;
 	private JButton btn04;
 	private JButton btn05;
+	private JPanel pJCheckRadio;
 	private JButton btn06;
+	private JButton btn07;
 
 	
 	public static void main(String[] args) {
@@ -67,10 +72,10 @@ public class SwingMain extends JFrame implements ActionListener {
 		contentPane = new JPanel();		//프레임 안에 contentPane 생성
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));	//contentPane 안쪽여백 설정
 		setContentPane(contentPane);
-		contentPane.setLayout(new GridLayout(0, 3, 10, 10));//행, 열, 수평갭, 수직갭
+		contentPane.setLayout(new GridLayout(0, 3, 10, 10));//행, 열, 수평gap, 수직gap
 		
 		btn01 = new JButton("Jframe 예");	//버튼 생성
-		btn01.addActionListener(this);	//actionperformed를 JFrame에서 해결하도록 작성
+		btn01.addActionListener(this);	//actionperformed를 생성해서 JFrame에서 해결하도록 작성
 		contentPane.add(btn01);	//contentPane위에 버튼추가
 		
 		btn02 = new JButton("Jpanel 예");	//버튼 생성
@@ -126,13 +131,29 @@ public class SwingMain extends JFrame implements ActionListener {
 		pComponent1.add(btn04);
 		
 		btn05 = new JButton("JButton");
+		btn05.addActionListener(this);
 		pComponent1.add(btn05);
 		
-		btn06 = new JButton("JToggle");
-		pComponent1.add(btn06);
+		pJCheckRadio = new JPanel();
+		pJCheckRadio.setBorder(new TitledBorder(null, "JCheckBox & JRadioButton", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pJCheckRadio);
+		
+		btn06 = new JButton("JCheckBox");
+		btn06.addActionListener(this);
+		pJCheckRadio.setLayout(new GridLayout(0, 1, 0, 0));
+		pJCheckRadio.add(btn06);
+		
+		btn07 = new JButton("JRadioButton");
+		pJCheckRadio.add(btn07);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn06) {
+			actionPerformedBtn06(e);
+		}
+		if (e.getSource() == btn05) {
+			actionPerformedBtn05(e);
+		}
 		if (e.getSource() == btn04) {
 			actionPerformedBtn04(e);
 		}
@@ -191,5 +212,26 @@ public class SwingMain extends JFrame implements ActionListener {
 	protected void actionPerformedBtn04(ActionEvent e) {
 		LabelEx frame = new LabelEx();
 		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn05(ActionEvent e) {
+		JButtonEx frame = new JButtonEx();
+		frame.setVisible(true);
+	}
+	//Btn06을 눌렀을 때 창이 총 2개 뜬다.
+	protected void actionPerformedBtn06(ActionEvent e) {
+		JCheckBoxEx frame = new JCheckBoxEx();
+		frame.setVisible(true);
+		
+		ArrayList<Fruit> list = new ArrayList<Fruit>();
+		list.add(new Fruit("사과", 100));
+		list.add(new Fruit("배", 500));
+		list.add(new Fruit("체리", 2000));
+		list.add(new Fruit("바나나", 3000));
+		list.add(new Fruit("오렌지", 3000));
+		list.add(new Fruit("땅콩", 3000));
+		list.add(new Fruit("아보카도", 3000));
+		
+		JCheckBoxCustomEx frame1 = new JCheckBoxCustomEx(list);
+		frame1.setVisible(true);
 	}
 }
