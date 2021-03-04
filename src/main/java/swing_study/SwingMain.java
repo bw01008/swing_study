@@ -12,6 +12,7 @@ import swing_study.component.JButtonEx;
 import swing_study.component.JCheckBoxCustomEx;
 import swing_study.component.JCheckBoxEx;
 import swing_study.component.JRadioButtonEx;
+import swing_study.component.JTextFieldAreaEx;
 import swing_study.component.LabelEx;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JPanelEx;
@@ -27,6 +28,7 @@ import javax.swing.border.TitledBorder;
 import javax.swing.UIManager;
 import java.awt.Color;
 
+@SuppressWarnings("serial")
 public class SwingMain extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
@@ -44,6 +46,8 @@ public class SwingMain extends JFrame implements ActionListener {
 	private JPanel pJCheckRadio;
 	private JButton btn06;
 	private JButton btn07;
+	private JPanel pText;
+	private JButton btn08;
 
 	
 	public static void main(String[] args) {
@@ -147,9 +151,20 @@ public class SwingMain extends JFrame implements ActionListener {
 		btn07 = new JButton("JRadioButton");
 		btn07.addActionListener(this);
 		pJCheckRadio.add(btn07);
+		
+		pText = new JPanel();
+		pText.setBorder(new TitledBorder(null, "텍스트 필드", TitledBorder.LEADING, TitledBorder.TOP, null, null));
+		contentPane.add(pText);
+		
+		btn08 = new JButton("TextField 관련예제");
+		btn08.addActionListener(this);
+		pText.add(btn08);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn08) {
+			actionPerformedBtn08(e);
+		}
 		if (e.getSource() == btn07) {
 			actionPerformedBtn07(e);
 		}
@@ -241,6 +256,10 @@ public class SwingMain extends JFrame implements ActionListener {
 	}
 	protected void actionPerformedBtn07(ActionEvent e) {
 		JRadioButtonEx frame = new JRadioButtonEx();
+		frame.setVisible(true);
+	}
+	protected void actionPerformedBtn08(ActionEvent e) {
+		JTextFieldAreaEx frame = new JTextFieldAreaEx();
 		frame.setVisible(true);
 	}
 }

@@ -67,7 +67,9 @@ public class JRadioButtonEx extends JFrame implements ItemListener {
 
 	@Override
 	public void itemStateChanged(ItemEvent e) {
+		//라디오 버튼이 선택(클릭)되었을때 아이텐리스너 기능이 실행이 되면서 선택된 버튼의 정보가 넘어와서 변수에 저장된다
 		JRadioButton rd = (JRadioButton) e.getSource();
+		// 넘어온 라디오 버튼상태가 선택된 상태면 그 버튼정보의 Text를 가져와서 변수 text에 저장
 		if (e.getStateChange() == ItemEvent.SELECTED) {
 //			JOptionPane.showMessageDialog(null, rd.getText()); 선택된 버튼의 텍스트가 팝업으로 뜬다
 			String text = rd.getText();
