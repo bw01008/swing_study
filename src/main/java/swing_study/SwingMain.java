@@ -11,6 +11,7 @@ import swing_study.component.Fruit;
 import swing_study.component.JButtonEx;
 import swing_study.component.JCheckBoxCustomEx;
 import swing_study.component.JCheckBoxEx;
+import swing_study.component.JRadioButtonEx;
 import swing_study.component.LabelEx;
 import swing_study.frame.ContentPaneEx;
 import swing_study.frame.JPanelEx;
@@ -62,7 +63,7 @@ public class SwingMain extends JFrame implements ActionListener {
 	 * Create the frame.
 	 */
 	public SwingMain() {
-		initialize();
+		initialize(); //보이는 부분을 초기화(UI를 꾸미기 위한 메소드)
 	}
 	
 	private void initialize() {
@@ -144,10 +145,14 @@ public class SwingMain extends JFrame implements ActionListener {
 		pJCheckRadio.add(btn06);
 		
 		btn07 = new JButton("JRadioButton");
+		btn07.addActionListener(this);
 		pJCheckRadio.add(btn07);
 	}
 
 	public void actionPerformed(ActionEvent e) {
+		if (e.getSource() == btn07) {
+			actionPerformedBtn07(e);
+		}
 		if (e.getSource() == btn06) {
 			actionPerformedBtn06(e);
 		}
@@ -233,5 +238,9 @@ public class SwingMain extends JFrame implements ActionListener {
 		
 		JCheckBoxCustomEx frame1 = new JCheckBoxCustomEx(list);
 		frame1.setVisible(true);
+	}
+	protected void actionPerformedBtn07(ActionEvent e) {
+		JRadioButtonEx frame = new JRadioButtonEx();
+		frame.setVisible(true);
 	}
 }
