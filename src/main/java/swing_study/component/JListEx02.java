@@ -1,32 +1,31 @@
 package swing_study.component;
 
 import java.awt.BorderLayout;
-import java.awt.EventQueue;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
 import javax.swing.DefaultListModel;
 import javax.swing.JFrame;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
+import javax.swing.JList;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
 import javax.swing.JTextField;
 import javax.swing.ListModel;
-import javax.swing.JList;
-import javax.swing.JOptionPane;
-import javax.swing.JScrollPane;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import java.awt.GridLayout;
+import javax.swing.border.EmptyBorder;
 
+@SuppressWarnings("serial")
 public class JListEx02 extends JFrame implements ActionListener {
 
 	private JPanel contentPane;
 	private JTextField tfValue;
-	private JList<String> nameList; // 이름이 입력될때마다 추가되야함(외부 접근하기 위해 필드로 빼줬다)
+	private JList<String> nameList; // 리스트에 수정된 벡터를 달아주었다
 	private ArrayList<String> stdList = new ArrayList<>(); // ArrayList생성
-	private JList<String> nameList2;
+	private JList<String> nameList2;// 리스트에 모델을 넣어주었다.
 
 	public JListEx02() {
 		stdList.add("김인환"); // ArrayList에 데이터 추가
@@ -72,18 +71,22 @@ public class JListEx02 extends JFrame implements ActionListener {
 		nameList.setListData(new Vector<String>(stdList)); // setListData로 리스트에 벡터를 삽입
 		nameList.setFixedCellWidth(100);
 		nameList.setVisibleRowCount(5); // 한번에 보이는 열의 수
-		scrollPane.setViewportView(nameList);
-
+		scrollPane.setViewportView(nameList);	//스크롤 페인 뷰포트 위에 리스트 추가
+		// 또다른 스크롤 패인 생성 후 pList에 추가
 		JScrollPane scrollPane_1 = new JScrollPane();
 		pList.add(scrollPane_1);
-
-		nameList2 = new JList<>();
-		nameList2.setModel(getModel(stdList));
+		// 리스트 생성해서 스크롤페인의 뷰포트 위에 추가
+		nameList2 = new JList<>();	
+		//생성한 getModel()메소드를 호출해서 model을 리턴 받고, 리스트에 추가해준다
+		nameList2.setModel(getModel(stdList)); //**********************
 		scrollPane_1.setViewportView(nameList2);
 	}
-
+	
+	//
 	private ListModel<String> getModel(List<String> stdList) {
+		//String 타입의 model생성
 		DefaultListModel<String> model = new DefaultListModel<String>();
+		// List 안에 있는 문자열들을 하나씩 풀어서 model에 추가
 		for (String e : stdList) {
 			model.addElement(e);
 		}
@@ -97,20 +100,21 @@ public class JListEx02 extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedTfValue(ActionEvent arg0) {
-		// 텍스트필드에 있는 텍스트를 가져온다.
+		// 텍스트필드에 입력된 텍스트를 가져온다.
 		String value = tfValue.getText().trim();
-		// 입력한 이름을 팝업창에 띄워준다.
-//		JOptionPane.showMessageDialog(null, value);
-		// 입력한 이름을 ArrayList에 추가한다.
+		// 입력돤 텍스트를 String타입의 ArrayList에 추가한다.
 		stdList.add(value);
-		// 리스트에 수정된 벡터를 다시 달아준다.
-		nameList.setListData(new Vector<String>(stdList));
+		// 추가된 ArrayList를 매개변수로 넣어서 벡터생성
+		Vector<String> v = new Vector<String>(stdList);
+		//Jlist에 추가해준다(덮는다)
+		nameList.setListData(v);
 		// 추가 후 텍스트 필드를 공백으로
 		tfValue.setText("");
 		// 텍스트 필드에 커서세팅
 		tfValue.requestFocus();
+		// 리스트에 있는 모델들을 가져와서 변수에 저장
+		DefaultListModel<String> model = (DefaultListModel)nameList2.getModel();
 		
-		DefaultListModel<String> model = (DefaultListModel<String>) nameList2.getModel();
 		model.addElement(value);
 	}
 }
