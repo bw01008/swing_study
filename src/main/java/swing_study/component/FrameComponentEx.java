@@ -40,19 +40,20 @@ public class FrameComponentEx extends JFrame implements ActionListener {
 		setContentPane(contentPane);
 		contentPane.setLayout(new GridLayout(0, 1, 0, 0));
 
-		btn01 = createBtn();
+		btn01 = createBtn();	//버튼 
 		contentPane.add(btn01);
 
 		btn02 = new JButton("Disabled Button");
 		btn02.addActionListener(this);
-		btn02.setEnabled(false);
+		btn02.setEnabled(false);	// 버튼 비활성화
 		contentPane.add(btn02);
 
 		btn03 = new JButton("getX(), getY()");
 		btn03.addActionListener(this);
 		contentPane.add(btn03);
 	}
-
+	
+	//버튼을 생성하는 코드를 따로 빼서 메소드로 만들었다.
 	public JButton createBtn() {
 		JButton btn = btn01_1 = new JButton("Magenta /Yellow Button");
 		btn01_1.addActionListener(this);
@@ -76,9 +77,11 @@ public class FrameComponentEx extends JFrame implements ActionListener {
 	}
 
 	protected void actionPerformedBtn03(ActionEvent arg0) {
-		JButton btn = (JButton) arg0.getSource(); // 액션 이벤트가 발생한 버튼의 정보(?)를 가져온다.
-		FrameComponentEx parent = (FrameComponentEx) btn.getTopLevelAncestor(); // 해당 버튼이 올라가있는 jframe(즉 최상위 부모 컨테이너 리턴)
-		parent.setTitle(btn.getX() + ", " + btn.getY()); // 최상위 부모 컨테이너 타이틀에 버튼의 좌표가 뜨도록 설정
+		// 액션 이벤트가 발생한 버튼의 정보(?)를 가져온다.
+		JButton btn = (JButton) arg0.getSource(); 
+		// 해당 버튼이 올라가있는 JFrame (즉 최상위 부모 컨테이너) 리턴, 타입은 해당 클래스 이름으로(JFrame을 상속하고 있다.)
+		FrameComponentEx parent = (FrameComponentEx) btn.getTopLevelAncestor(); 
+		parent.setTitle(btn.getX() + ", " + btn.getY()); // 최상위 부모 컨테이너 타이틀에 버튼의 좌표(버튼의 상단 좌측)가 뜨도록 설정
 
 		if (btn02.isEnabled()) {
 			btn02.setEnabled(false);

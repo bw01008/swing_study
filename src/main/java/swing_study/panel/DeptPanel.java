@@ -53,7 +53,7 @@ public class DeptPanel extends JPanel {
 		add(tfFloor);
 	}
 
-	//텍스트 필드에 부서 정보 설정해주는 메소드
+	//텍스트 필드에 부서 정보 설정해주는 메소드 > 매개변수로 받은 객체의 필드값으로 설정해준다
 	public void setDepartment(Department department) {
 //		tfDeptNo.setText(String.valueOf(department.getDeptNo()));
 		tfDeptNo.setText(department.getDeptNo() + "");

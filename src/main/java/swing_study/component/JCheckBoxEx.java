@@ -18,7 +18,7 @@ public class JCheckBoxEx extends JFrame implements ItemListener{
 	private JCheckBox chckbxApple;
 	private JCheckBox chckbxPear;
 	private JCheckBox chckbxCherry;
-	private JLabel lblResult;
+	private JLabel lblResult;	// 레이블 변경이 가능하도록 필드로 선언
 	private int sum;
 	private String resStr ="현재 0 원입니다.";
 
@@ -79,8 +79,8 @@ public class JCheckBoxEx extends JFrame implements ItemListener{
 		if (arg0.getSource() == chckbxApple) {
 			itemStateChangedChckbxApple(arg0);
 		}
-		resStr = String.format("현재 %d 원입니다.", sum);
-		lblResult.setText(resStr);
+		resStr = String.format("현재 %d 원입니다.", sum);	
+		lblResult.setText(resStr);//체크박스가 체크될 때마다 변동되는 금액을 반영해서 변경
 	}
 	protected void itemStateChangedChckbxApple(ItemEvent arg0) {
 		if(arg0.getStateChange() == ItemEvent.SELECTED) {

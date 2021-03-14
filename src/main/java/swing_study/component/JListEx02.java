@@ -56,7 +56,7 @@ public class JListEx02 extends JFrame implements ActionListener {
 		pNorth.add(tfValue);
 		tfValue.setColumns(10);
 
-		// 1. 보더 레이아웃 패널 추가
+		// 1. 보더레이아웃에 패널 추가
 		JPanel pList = new JPanel();
 		pList.setBorder(new EmptyBorder(0, 100, 0, 100));
 		contentPane.add(pList, BorderLayout.CENTER);
@@ -69,7 +69,6 @@ public class JListEx02 extends JFrame implements ActionListener {
 		// 3. 스크롤 페인 위에 리스트 추가
 		nameList = new JList<>(); // JList 생성
 		nameList.setListData(new Vector<String>(stdList)); // setListData로 리스트에 벡터를 삽입
-		nameList.setFixedCellWidth(100);
 		nameList.setVisibleRowCount(5); // 한번에 보이는 열의 수
 		scrollPane.setViewportView(nameList);	//스크롤 페인 뷰포트 위에 리스트 추가
 		// 또다른 스크롤 패인 생성 후 pList에 추가

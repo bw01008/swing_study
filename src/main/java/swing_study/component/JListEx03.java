@@ -112,7 +112,7 @@ public class JListEx03 extends JFrame implements ActionListener {
 			actionPerformedBtnConfirm(arg0);
 		}
 		if (arg0.getSource() == btnAdd) {
-			//텍스트 필드에 있는 텍스트들을 변경 후 (pLeftSouth에 위치한)추가버튼이 수정버튼이면, else문에 있는 메소드가 호출된다.
+			// 텍스트 필드에 있는 텍스트들을 변경 후 (pLeftSouth에 위치한)추가버튼이 수정버튼이면, else문에 있는 메소드가 호출된다.
 			if (btnAdd.getText().equals("추가")) {
 				actionPerformedBtnAdd(arg0);
 			} else {
@@ -135,23 +135,23 @@ public class JListEx03 extends JFrame implements ActionListener {
 		JOptionPane.showMessageDialog(null, "수정완료되었습니다.");
 
 	}
-	
-	//추가 버튼을 눌렀을 때 tf에 작성한 정보가 리스트에 추가되게 해주는 메소드
+
+	// 추가 버튼을 눌렀을 때 tf에 작성한 정보가 리스트에 추가되게 해주는 메소드
 	protected void actionPerformedBtnAdd(ActionEvent arg0) {
-		//텍스트필드에 작성된 텍스트로 생성한 객체를 반환하는 메소드를 호출해서 변수에 저장
+		// 텍스트필드에 작성된 텍스트로 생성한 객체를 반환하는 메소드를 호출해서 변수에 저장
 		Department dept = pLeftCenter.getDepartment();
 		// 텍스트필드를 공백으로 만들어주는 메소드 호출
 		pLeftCenter.clearTf();
-		//모델에 반환받은 객체를 추가
+		// 모델에 반환받은 객체를 추가
 		model.addElement(dept);
 		JOptionPane.showMessageDialog(null, "추가되었습니다.");
 	}
 
-	//확인 버튼을 눌렀을 때 선택한 요소의 정보를 띄워주는 메소드
+	// 확인 버튼을 눌렀을 때 선택한 요소의 정보를 띄워주는 메소드
 	protected void actionPerformedBtnConfirm(ActionEvent arg0) {
 		// 부서목록에서 선택된 부서의 인덱스 번호로 찾아서 반환
 		int idx = deptList.getSelectedIndex(); // 선택된 인덱스
-		//선택한 요소의 인덱스 값으로 요소의 정보를 받아와서 변수에 저장
+		// 선택한 요소의 인덱스 값으로 요소의 정보를 받아와서 변수에 저장
 		Department selDept = model.get(idx);
 		String message1 = String.format("%d번부서, %s부서, %d층", selDept.getDeptNo(), selDept.getDeptName(),
 				selDept.getFloor());
@@ -160,14 +160,14 @@ public class JListEx03 extends JFrame implements ActionListener {
 		String message = String.format("%d번부서, %s부서, %d층", dept.getDeptNo(), dept.getDeptName(), dept.getFloor());
 		JOptionPane.showMessageDialog(null, message + "\n" + message1);
 	}
-	
-	//수정 버튼을 눌렀을 때 선택한 요소의 정보를 tf에 불러오는 메소드
+
+	// 수정 버튼을 눌렀을 때 선택한 요소의 정보를 tf에 불러오는 메소드
 	protected void actionPerformedBtnUpdate(ActionEvent arg0) {
-		//선택한 요소의 정보를 변수에 저장
+		// 선택한 요소의 정보를 변수에 저장
 		Department selDept = deptList.getSelectedValue();
-		//setDepartment메소드를 호출해서 tf에 불러오기
+		// setDepartment메소드를 호출해서 tf에 불러오기
 		pLeftCenter.setDepartment(selDept);
-		//버튼 이름 변경
+		// 버튼 이름 변경
 		btnAdd.setText("수정");
 
 	}

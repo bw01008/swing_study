@@ -13,6 +13,7 @@ public class FrameLayout extends JFrame {
 	private JPanel contentPane;
 	private LayoutGubun gubun;	//enum선언
 	
+	//열거형을 매개변수로 받는 생성자** > 버튼 액션메소드확인
 	public FrameLayout(LayoutGubun gubun) {
 		this.gubun = gubun;
 		initialize();
